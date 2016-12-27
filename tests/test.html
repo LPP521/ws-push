@@ -1,0 +1,13 @@
+<script>
+var ws = new WebSocket("ws://localhost:9012/channel");
+ws.onopen = function() {
+    var msg = {
+        channel_id: "123123"
+    };
+    ws.send(JSON.stringify(msg));
+};
+ws.onmessage = function (evt) {
+    var data = JSON.parse(evt.data);
+    console.log("response data is: " + JSON.stringify(data));
+};
+</script>
